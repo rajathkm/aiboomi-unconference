@@ -593,6 +593,74 @@
             border-color: rgba(255,255,255,0.1);
         }
 
+        /* Expandable Topics Section */
+        .track-expand {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 1rem;
+        }
+
+        .track-expand-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .track-expand-toggle:hover {
+            color: var(--text-primary);
+        }
+
+        .track-expand-toggle svg {
+            transition: transform 0.3s ease;
+        }
+
+        .track-expand-toggle.active svg {
+            transform: rotate(180deg);
+        }
+
+        .track-expand-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .track-expand-content.active {
+            max-height: 600px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        .topic-idea {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .topic-idea:last-child {
+            border-bottom: none;
+        }
+
+        .topic-idea h5 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .topic-idea p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
         /* Schedule Section */
         .schedule-section {
             background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-surface) 100%);
@@ -1029,6 +1097,35 @@
                     <span class="topic-tag">Imposter Syndrome</span>
                     <span class="topic-tag">Funding Rejections</span>
                 </div>
+
+                <div class="track-expand">
+                    <button class="track-expand-toggle" onclick="toggleExpand(this)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        Session Topic Ideas
+                    </button>
+                    <div class="track-expand-content">
+                        <div class="topic-idea">
+                            <h5>"The Loneliest Decision"</h5>
+                            <p>Gut-wrenching calls founders made alone &mdash; layoffs, pivots, shutdowns</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"When AI Threatened My Identity"</h5>
+                            <p>Traditional SaaS founders grappling with reinvention in the AI age</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"The Failures We Don't LinkedIn About"</h5>
+                            <p>Real losses, real lessons &mdash; the stories behind the "pivot" narratives</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Co-founder Breakups & Makeups"</h5>
+                            <p>The relationships that ended and what survived</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Imposter Syndrome in the Age of AI"</h5>
+                            <p>Feeling left behind when everyone seems to be shipping agents</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Soul Track -->
@@ -1048,6 +1145,35 @@
                     <span class="topic-tag">Burnout Recovery</span>
                     <span class="topic-tag">The 5AM Routine</span>
                     <span class="topic-tag">Finding Your North Star</span>
+                </div>
+
+                <div class="track-expand">
+                    <button class="track-expand-toggle" onclick="toggleExpand(this)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        Session Topic Ideas
+                    </button>
+                    <div class="track-expand-content">
+                        <div class="topic-idea">
+                            <h5>"Vipassana & Venture"</h5>
+                            <p>How 10-day silence changed their operating system &mdash; with Sriram, Aneesh</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"The 5AM Founder"</h5>
+                            <p>Morning routines that build resilience &mdash; what actually works</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"From Burnout to Balance"</h5>
+                            <p>Recovery stories, warning signs, and the path back</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"The Infinite Game"</h5>
+                            <p>Playing for longevity, not just exits &mdash; sustainable building</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Finding Your North Star"</h5>
+                            <p>Purpose-driven founding when metrics fail you</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1069,6 +1195,39 @@
                     <span class="topic-tag">Vertical AI Playbooks</span>
                     <span class="topic-tag">Hiring AI Engineers</span>
                 </div>
+
+                <div class="track-expand">
+                    <button class="track-expand-toggle" onclick="toggleExpand(this)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        Session Topic Ideas
+                    </button>
+                    <div class="track-expand-content">
+                        <div class="topic-idea">
+                            <h5>"Claude Co-working for Non-Technical Founders"</h5>
+                            <p>Ship something real in 90 minutes &mdash; laptops open, building together</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"AI-First GTM Strategies"</h5>
+                            <p>Selling AI products differently &mdash; PLG vs Enterprise, usage-based pricing</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"From SaaS Metrics to AI Metrics"</h5>
+                            <p>New KPIs: usage patterns, inference costs, hallucination rates</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Vertical AI Deep-Dives"</h5>
+                            <p>Healthcare AI, Legal AI, FinTech AI, HRTech AI &mdash; what's actually working</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Hiring Your First AI Engineer"</h5>
+                            <p>What to look for, where to find them, how to evaluate</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Data Moats in the LLM Era"</h5>
+                            <p>What defensibility actually looks like when everyone has GPT-4</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Hand Track -->
@@ -1088,6 +1247,35 @@
                     <span class="topic-tag">Off the Record</span>
                     <span class="topic-tag">Technical Deep-Dives</span>
                     <span class="topic-tag">Investor Candids</span>
+                </div>
+
+                <div class="track-expand">
+                    <button class="track-expand-toggle" onclick="toggleExpand(this)">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                        Session Topic Ideas
+                    </button>
+                    <div class="track-expand-content">
+                        <div class="topic-idea">
+                            <h5>Extended Speaker AMAs</h5>
+                            <p>Main-stage speakers stay for 60+ mins of unstructured Q&A</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"The Unasked Question"</h5>
+                            <p>What the audience really wanted to know but didn't get to ask</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"Off the Record" Investor Sessions</h5>
+                            <p>Candid conversations about the current market, what they're looking for</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>Technical Deep-Dives with CTOs</h5>
+                            <p>Go granular on architecture, infrastructure, scaling challenges</p>
+                        </div>
+                        <div class="topic-idea">
+                            <h5>"The Real Fundraising Story"</h5>
+                            <p>What actually happened in those rounds &mdash; behind the press release</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1278,6 +1466,13 @@
                 glow.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
             });
         });
+
+        // Toggle expandable sections
+        function toggleExpand(button) {
+            const content = button.nextElementSibling;
+            button.classList.toggle('active');
+            content.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
