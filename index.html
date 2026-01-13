@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIBoomi Unconference | SaasBoomi Annual 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --bg-surface: #0d0d12;
+            --bg-elevated: #16161d;
+            --text-primary: #f4f4f6;
+            --text-secondary: #a1a1aa;
+            --text-muted: #71717a;
+
+            /* Track Colors */
+            --heart-primary: #c026d3;
+            --heart-secondary: #a855f7;
+            --heart-glow: rgba(192, 38, 211, 0.4);
+
+            --soul-primary: #f59e0b;
+            --soul-secondary: #fbbf24;
+            --soul-glow: rgba(245, 158, 11, 0.4);
+
+            --brain-primary: #06b6d4;
+            --brain-secondary: #3b82f6;
+            --brain-glow: rgba(6, 182, 212, 0.4);
+
+            --hand-primary: #ea580c;
+            --hand-secondary: #dc2626;
+            --hand-glow: rgba(234, 88, 12, 0.4);
+
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Star field background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--bg-deep) 0%, transparent 100%);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--heart-primary), var(--brain-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--heart-primary), var(--brain-primary));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(192, 38, 211, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-glow-1 {
+            top: -200px;
+            left: -200px;
+            background: var(--heart-primary);
+        }
+
+        .hero-glow-2 {
+            bottom: -300px;
+            right: -200px;
+            background: var(--brain-primary);
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-elevated);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--soul-primary);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--heart-primary), var(--soul-primary), var(--brain-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--heart-primary), var(--heart-secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px var(--heart-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            margin-top: 5rem;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 8rem 4rem;
+            position: relative;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 4rem;
+        }
+
+        /* Why Section */
+        .why-section {
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-surface) 50%, var(--bg-deep) 100%);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .why-card {
+            padding: 2.5rem;
+            background: var(--bg-elevated);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 24px;
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255,255,255,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+
+        .why-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(192, 38, 211, 0.2), rgba(6, 182, 212, 0.2));
+            border-radius: 12px;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .why-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Tracks Section */
+        .tracks-section {
+            background: var(--bg-deep);
+        }
+
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .track-card {
+            position: relative;
+            padding: 3rem;
+            border-radius: 32px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .track-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-elevated);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 32px;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+
+        .track-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .track-card:hover::after {
+            opacity: 0.1;
+        }
+
+        .track-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        .track-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Heart Track */
+        .track-heart::after {
+            background: radial-gradient(circle, var(--heart-primary) 0%, transparent 70%);
+        }
+        .track-heart:hover::before {
+            border-color: var(--heart-primary);
+            box-shadow: 0 0 60px var(--heart-glow), inset 0 0 60px rgba(192, 38, 211, 0.05);
+        }
+        .track-heart .track-icon {
+            background: linear-gradient(135deg, var(--heart-primary), var(--heart-secondary));
+        }
+        .track-heart .track-time {
+            color: var(--heart-primary);
+        }
+
+        /* Soul Track */
+        .track-soul::after {
+            background: radial-gradient(circle, var(--soul-primary) 0%, transparent 70%);
+        }
+        .track-soul:hover::before {
+            border-color: var(--soul-primary);
+            box-shadow: 0 0 60px var(--soul-glow), inset 0 0 60px rgba(245, 158, 11, 0.05);
+        }
+        .track-soul .track-icon {
+            background: linear-gradient(135deg, var(--soul-primary), var(--soul-secondary));
+        }
+        .track-soul .track-time {
+            color: var(--soul-primary);
+        }
+
+        /* Brain Track */
+        .track-brain::after {
+            background: radial-gradient(circle, var(--brain-primary) 0%, transparent 70%);
+        }
+        .track-brain:hover::before {
+            border-color: var(--brain-primary);
+            box-shadow: 0 0 60px var(--brain-glow), inset 0 0 60px rgba(6, 182, 212, 0.05);
+        }
+        .track-brain .track-icon {
+            background: linear-gradient(135deg, var(--brain-primary), var(--brain-secondary));
+        }
+        .track-brain .track-time {
+            color: var(--brain-primary);
+        }
+
+        /* Hand Track */
+        .track-hand::after {
+            background: radial-gradient(circle, var(--hand-primary) 0%, transparent 70%);
+        }
+        .track-hand:hover::before {
+            border-color: var(--hand-primary);
+            box-shadow: 0 0 60px var(--hand-glow), inset 0 0 60px rgba(234, 88, 12, 0.05);
+        }
+        .track-hand .track-icon {
+            background: linear-gradient(135deg, var(--hand-primary), var(--hand-secondary));
+        }
+        .track-hand .track-time {
+            color: var(--hand-primary);
+        }
+
+        .track-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .track-icon {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            font-size: 2rem;
+        }
+
+        .track-time {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .track-name {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .track-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .track-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .track-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .topic-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .track-card:hover .topic-tag {
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-surface) 100%);
+        }
+
+        .schedule-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .schedule-day {
+            margin-bottom: 4rem;
+        }
+
+        .day-header {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .day-header span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--heart-primary), var(--brain-primary));
+        }
+
+        .schedule-item {
+            display: flex;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            background: rgba(255,255,255,0.02);
+            padding-left: 1rem;
+            margin-left: -1rem;
+            padding-right: 1rem;
+            margin-right: -1rem;
+            border-radius: 16px;
+        }
+
+        .schedule-time {
+            min-width: 120px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .schedule-content h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .schedule-content p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .schedule-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: 0.75rem;
+        }
+
+        .schedule-tag.heart { background: var(--heart-glow); color: var(--heart-primary); }
+        .schedule-tag.soul { background: var(--soul-glow); color: var(--soul-primary); }
+        .schedule-tag.brain { background: var(--brain-glow); color: var(--brain-primary); }
+        .schedule-tag.hand { background: var(--hand-glow); color: var(--hand-primary); }
+
+        /* Takeaways Section */
+        .takeaways-section {
+            background: var(--bg-surface);
+            text-align: center;
+        }
+
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .takeaway-item {
+            padding: 2rem;
+        }
+
+        .takeaway-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            background: var(--bg-elevated);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .takeaway-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .takeaway-item p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 10rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.2;
+        }
+
+        .cta-glow-1 {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--heart-primary);
+        }
+
+        .cta-glow-2 {
+            bottom: 0;
+            left: 30%;
+            background: var(--brain-primary);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 6vw, 5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section h2 em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--soul-primary), var(--heart-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, var(--heart-primary), var(--brain-primary));
+            color: white;
+            padding: 1.25rem 3rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 30px 80px rgba(192, 38, 211, 0.4);
+        }
+
+        .cta-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-button:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem;
+            background: var(--bg-deep);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+        }
+
+        .footer-logo span {
+            background: linear-gradient(135deg, var(--heart-primary), var(--brain-primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            section {
+                padding: 6rem 2rem;
+            }
+
+            .tracks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .takeaways-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .takeaways-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+            }
+        }
+
+        /* Floating orbs decoration */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Star field -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">AI<span>Boomi</span></div>
+        <ul class="nav-links">
+            <li><a href="#tracks">Tracks</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#takeaways">Takeaways</a></li>
+        </ul>
+        <a href="#register" class="nav-cta">Register Now</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+
+        <div class="hero-badge">
+            SaasBoomi Annual 2026
+        </div>
+
+        <h1>Where Founders<br>Find Their <em>Tribe</em></h1>
+
+        <p class="hero-tagline">
+            9 hours of unconference sessions designed for AI founders.
+            No pitches. No panels. Just real conversations that move the needle.
+        </p>
+
+        <div class="hero-ctas">
+            <a href="#register" class="btn-primary">Reserve Your Spot</a>
+            <a href="#tracks" class="btn-secondary">Explore Tracks</a>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Tracks</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">9</div>
+                <div class="stat-label">Hours</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2</div>
+                <div class="stat-label">Days</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Section -->
+    <section class="why-section">
+        <p class="section-label reveal">The Format</p>
+        <h2 class="section-title reveal">This isn't another conference.<br>It's a <em>conversation</em>.</h2>
+        <p class="section-subtitle reveal">
+            An unconference is participant-led. You shape the agenda. You learn from each other.
+            No experts on stage. Just founders in the arena.
+        </p>
+
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <div class="why-icon">&#128172;</div>
+                <h3>Participant-Led</h3>
+                <p>The agenda emerges from the room. Bring your burning questions, your hard-won lessons, your half-formed ideas.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">&#127793;</div>
+                <h3>Small Circles</h3>
+                <p>8-30 people per session. Intimate enough for real conversation. Diverse enough for unexpected insights.</p>
+            </div>
+            <div class="why-card reveal">
+                <div class="why-icon">&#128274;</div>
+                <h3>Chatham House Rules</h3>
+                <p>Share what you learned, not who said it. This creates space for the unfiltered truths that actually help.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tracks Section -->
+    <section class="tracks-section" id="tracks">
+        <p class="section-label reveal">The Four Tracks</p>
+        <h2 class="section-title reveal">Heart. Soul. Brain. Hand.</h2>
+        <p class="section-subtitle reveal">
+            Four dimensions of the founder journey. From tactical execution to emotional resilience.
+        </p>
+
+        <div class="tracks-grid">
+            <!-- Heart Track -->
+            <div class="track-card track-heart reveal">
+                <div class="track-header">
+                    <div class="track-icon">&#10084;&#65039;</div>
+                    <div class="track-time">Saturday Evening</div>
+                </div>
+                <h3 class="track-name">Unfiltered / Unplugged</h3>
+                <p class="track-subtitle">"The conversations we don't have on LinkedIn"</p>
+                <p class="track-description">
+                    As the sun sets, guards come down. This is where founders share the real stories &mdash;
+                    the failures, the doubts, the loneliest decisions. Beanbags, dim lights, and Chatham House rules.
+                </p>
+                <div class="track-topics">
+                    <span class="topic-tag">The Day I Almost Quit</span>
+                    <span class="topic-tag">Co-founder Breakups</span>
+                    <span class="topic-tag">Imposter Syndrome</span>
+                    <span class="topic-tag">Funding Rejections</span>
+                </div>
+            </div>
+
+            <!-- Soul Track -->
+            <div class="track-card track-soul reveal">
+                <div class="track-header">
+                    <div class="track-icon">&#9728;&#65039;</div>
+                    <div class="track-time">Sunday Morning</div>
+                </div>
+                <h3 class="track-name">The Long Walk</h3>
+                <p class="track-subtitle">"Finding center before the storm"</p>
+                <p class="track-description">
+                    Before the day begins, a space for stillness. Resilience practices, centering rituals,
+                    and conversations about the inner game. Vipassana founders, morning routines, and sustainable building.
+                </p>
+                <div class="track-topics">
+                    <span class="topic-tag">Vipassana & Venture</span>
+                    <span class="topic-tag">Burnout Recovery</span>
+                    <span class="topic-tag">The 5AM Routine</span>
+                    <span class="topic-tag">Finding Your North Star</span>
+                </div>
+            </div>
+
+            <!-- Brain Track -->
+            <div class="track-card track-brain reveal">
+                <div class="track-header">
+                    <div class="track-icon">&#129504;</div>
+                    <div class="track-time">Both Days &bull; Midday</div>
+                </div>
+                <h3 class="track-name">Getting It Done</h3>
+                <p class="track-subtitle">"Tactical AI for builders"</p>
+                <p class="track-description">
+                    Roll up your sleeves. These sessions are for founders who want to build, not just talk.
+                    From Claude co-working sessions to vertical AI deep-dives. Bring your laptop.
+                </p>
+                <div class="track-topics">
+                    <span class="topic-tag">Claude Co-working</span>
+                    <span class="topic-tag">AI-First GTM</span>
+                    <span class="topic-tag">Vertical AI Playbooks</span>
+                    <span class="topic-tag">Hiring AI Engineers</span>
+                </div>
+            </div>
+
+            <!-- Hand Track -->
+            <div class="track-card track-hand reveal">
+                <div class="track-header">
+                    <div class="track-icon">&#129305;</div>
+                    <div class="track-time">Both Days &bull; Afternoon</div>
+                </div>
+                <h3 class="track-name">Baithak</h3>
+                <p class="track-subtitle">"The living room follow-up"</p>
+                <p class="track-description">
+                    Extended conversations with main-stage speakers. Like office hours, but warmer.
+                    Floor cushions, chai, and the questions you didn't get to ask. Many-to-many, not one-to-many.
+                </p>
+                <div class="track-topics">
+                    <span class="topic-tag">Speaker AMAs</span>
+                    <span class="topic-tag">Off the Record</span>
+                    <span class="topic-tag">Technical Deep-Dives</span>
+                    <span class="topic-tag">Investor Candids</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule-section" id="schedule">
+        <div class="schedule-container">
+            <p class="section-label reveal">The Journey</p>
+            <h2 class="section-title reveal">Two Days. Four Dimensions.</h2>
+            <p class="section-subtitle reveal">
+                A rhythm designed for depth, not exhaustion.
+            </p>
+
+            <div class="schedule-day reveal">
+                <h3 class="day-header"><span></span> Day One &mdash; Saturday</h3>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">12:00 &ndash; 1:30 PM</div>
+                    <div class="schedule-content">
+                        <h4>Getting It Done <span class="schedule-tag brain">Brain</span></h4>
+                        <p>Tactical AI session: Claude co-working for non-technical founders</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">2:30 &ndash; 4:00 PM</div>
+                    <div class="schedule-content">
+                        <h4>Baithak <span class="schedule-tag hand">Hand</span></h4>
+                        <p>Extended AMA with morning keynote speakers</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">7:30 &ndash; 9:00 PM</div>
+                    <div class="schedule-content">
+                        <h4>Unfiltered / Unplugged <span class="schedule-tag heart">Heart</span></h4>
+                        <p>Evening circle: The conversations we don't have on LinkedIn</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="schedule-day reveal">
+                <h3 class="day-header"><span></span> Day Two &mdash; Sunday</h3>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">8:00 &ndash; 9:30 AM</div>
+                    <div class="schedule-content">
+                        <h4>The Long Walk <span class="schedule-tag soul">Soul</span></h4>
+                        <p>Morning session: Resilience, centering, and the inner game</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">12:00 &ndash; 1:30 PM</div>
+                    <div class="schedule-content">
+                        <h4>Getting It Done <span class="schedule-tag brain">Brain</span></h4>
+                        <p>Tactical AI session: Vertical AI deep-dives (Healthcare, Legal, FinTech)</p>
+                    </div>
+                </div>
+
+                <div class="schedule-item">
+                    <div class="schedule-time">2:30 &ndash; 4:00 PM</div>
+                    <div class="schedule-content">
+                        <h4>Baithak <span class="schedule-tag hand">Hand</span></h4>
+                        <p>Closing conversations with Day 2 speakers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Takeaways Section -->
+    <section class="takeaways-section" id="takeaways">
+        <p class="section-label reveal">What You'll Leave With</p>
+        <h2 class="section-title reveal" style="margin: 0 auto 1.5rem;">More than insights.<br><em>Transformation.</em></h2>
+
+        <div class="takeaways-grid">
+            <div class="takeaway-item reveal">
+                <div class="takeaway-icon">&#128101;</div>
+                <h4>Your Tribe</h4>
+                <p>Deep connections with founders on the same journey. Not LinkedIn contacts. Real relationships.</p>
+            </div>
+            <div class="takeaway-item reveal">
+                <div class="takeaway-icon">&#128736;</div>
+                <h4>Tactical Playbooks</h4>
+                <p>Actual frameworks and code you can ship. From AI architecture to GTM strategies.</p>
+            </div>
+            <div class="takeaway-item reveal">
+                <div class="takeaway-icon">&#128161;</div>
+                <h4>Pattern Recognition</h4>
+                <p>See what's working across verticals. Shortcuts that took others years to discover.</p>
+            </div>
+            <div class="takeaway-item reveal">
+                <div class="takeaway-icon">&#128170;</div>
+                <h4>Renewed Conviction</h4>
+                <p>The clarity and energy to keep building. From founders who've been where you're going.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="register">
+        <div class="cta-glow cta-glow-1"></div>
+        <div class="cta-glow cta-glow-2"></div>
+
+        <div class="cta-content">
+            <h2 class="reveal">Ready to find<br>your <em>tribe</em>?</h2>
+            <p class="reveal">Limited seats. Curated attendees. Real conversations.</p>
+            <a href="#" class="cta-button reveal">
+                Reserve Your Spot
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">AI<span>Boomi</span> Unconference</div>
+            <p class="footer-text">Part of SaasBoomi Annual 2026</p>
+            <div class="footer-links">
+                <a href="#">About SaasBoomi</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Generate stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 100;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = Math.random() * 2 + 1 + 'px';
+                star.style.height = star.style.width;
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+
+        // Scroll reveal animations
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            reveals.forEach((element, index) => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 150;
+
+                if (elementTop < windowHeight - revealPoint) {
+                    element.style.transitionDelay = (index % 4) * 0.1 + 's';
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal(); // Initial check
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero glows
+        document.addEventListener('mousemove', (e) => {
+            const glows = document.querySelectorAll('.hero-glow');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            glows.forEach((glow, index) => {
+                const speed = index === 0 ? 30 : -30;
+                glow.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
